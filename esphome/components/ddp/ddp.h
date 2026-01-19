@@ -15,6 +15,7 @@ class DDPComponent : public Component, public Parented<esphome::udp::UDPComponen
  public:
   void setup() override;
   float get_setup_priority() const override { return this->parent_->get_setup_priority(); }
+  void loop() override;
 
   void add_renderer(DDPRenderer *effect);
   void remove_renderer(DDPRenderer *effect);

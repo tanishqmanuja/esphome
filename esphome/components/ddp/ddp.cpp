@@ -12,6 +12,12 @@ void DDPComponent::setup() {
   this->parent_->add_listener([this](std::vector<uint8_t> &buf) { this->process_(buf); });
 }
 
+void DDPComponent::loop() {
+  for (auto &renderer : this->renderers_) {
+    renderer->loop();
+  }
+}
+
 void DDPComponent::add_renderer(DDPRenderer *effect) { this->renderers_.push_back(effect); }
 
 void DDPComponent::remove_renderer(DDPRenderer *effect) {
